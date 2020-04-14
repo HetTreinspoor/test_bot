@@ -44,7 +44,7 @@ bot.on("message", async message => {
 
     if (message.channel.type === "dm") return;
 
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the permissions");
+    
 
     var prefix = botConfig.prefix;
 
@@ -55,6 +55,8 @@ bot.on("message", async message => {
     var arguments = messageArray.slice(1);
 
     if(!command.startsWith(prefix)) return
+
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the permissions");
 
 
     var commands = bot.commands.get(command.slice(prefix.length));
